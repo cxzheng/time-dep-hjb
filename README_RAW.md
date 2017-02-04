@@ -29,4 +29,4 @@ Compiling this source code requires [Boost](http://www.boost.org/) library.
 
 ### Customizing the PDEs
 The code solves the time-dependent Hamilton-Jacobi-Bellman (HJB) PDEs which have the form
-<p align="center"><img alt="$$u_t + f(x,t)|\nabla u| = g(x,t).$$" src="https://rawgit.com/in	git@github.com:leegao/readme2tex/master/svgs/769ecf7d27323fa679da0582eb8029bf.svg?invert_in_darkmode" align=middle width="182.53455pt" height="16.376943pt"/></p>
+$$u_t + f(x,t)|\nabla u| = g(x,t).$$
