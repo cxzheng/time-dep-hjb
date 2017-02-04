@@ -374,7 +374,7 @@ int main(int argc, char* argv[])
         printf("\rtime = %-10g", equ->time()); fflush(stdout);
         remainT = equ->time() - endT;
     }
-    fprintf(stderr, "%lf\n", GetMilliTimed() - st);
+    fprintf(stderr, "\nTotal time: %lf (sec)\n", GetMilliTimed() - st);
     printf("\nDone!\n");
     write_u(0);
 
