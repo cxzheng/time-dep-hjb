@@ -35,3 +35,21 @@ The code solves the time-dependent Hamilton-Jacobi-Bellman (HJB) PDEs which have
 This code includes three different numerical solvers for this type of PDE, namely the explicit, implicit, and hybrid methods. The main C++ files for these solvers are `ExplicitTDHJ2D.cpp`, `ImplicitTDHJ2D.cpp`, and `MixedTDHJ2D.cpp`, respectively. 
 These solvers are implemented as C++ templates, with both _f_ and _g_ functions as well as the boundary conditions specified 
 as the template parameters.
+
+Both the _f_ and _g_ functions are defined as C++ functionals, (i.e., a C++ struct with the operator `()`). For example, a _f_ function is defined as
+```C++
+struct func_F
+{
+    inline double operator() (const vector2d& pos, double t) const
+    {   return ... }
+};
+```
+The boundary condition class specifies the number of boundary nodes, the positions of the boundary nodes, and their values. Please refoer to the code in `src/BoundaryCond.h` for a few examples.
+
+Once _f_, _g_ and the boundary condition class are defined, you can solve the PDE by defining a test case in the solver’s main code (e.g. `ImplicitTDHJ2D.cpp`),
+```C++
+#ifdef USE_TEST_XX
+typedef SimpleBoundaryCond2D                      TBC;
+typedef CachedImpLattice2D<func_F, func_G, TBC>   TLattice;
+```
+Here `USE_TEST_XX` is the test case number. You can now enable this test case by define a flag `USE_TEST_XX` in `src/config.h` or add it in the compile flags.
