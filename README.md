@@ -32,4 +32,6 @@ The code solves the time-dependent Hamilton-Jacobi-Bellman (HJB) PDEs which have
 
 ![$$u_t + f(x,t)|\nabla u| = g(x,t).$$](https://raw.githubusercontent.com/cxzheng/time-dep-hjb/master/images/jqjt6g4.png)
 
-This code includes three different numerical solvers for this PDE.
+This code includes three different numerical solvers for this type of PDE, namely the explicit, implicit, and hybrid methods. The main C++ files for these solvers are `ExplicitTDHJ2D.cpp`, `ImplicitTDHJ2D.cpp`, and `MixedTDHJ2D.cpp`, respectively. 
+These solvers are implemented as C++ templates, with both _f_ and _g_ functions as well as the boundary conditions specified 
+as the template parameters.
