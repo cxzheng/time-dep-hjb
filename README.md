@@ -27,6 +27,9 @@ After compiling the code, you can run the three executables located in gcc-build
 #### Required Library
 Compiling this source code requires [Boost](http://www.boost.org/) library.
 
+#### Parallel Computation
+The code exploit multi-processor CPU to enable parallel compution (using __OPENMP__). The numerical solvers can be accelerated by parallel computation especially when the grid resolution is high. To enable parallel computation, turn on the flag `USE_OPENMP` in __cmake__.
+
 ### Customizing the PDEs
 The code solves the time-dependent Hamilton-Jacobi-Bellman (HJB) PDEs which have the form
 
@@ -53,3 +56,23 @@ typedef SimpleBoundaryCond2D                      TBC;
 typedef CachedImpLattice2D<func_F, func_G, TBC>   TLattice;
 ```
 Here `USE_TEST_XX` is the test case number. You can now enable this test case by define a flag `USE_TEST_XX` in `src/config.h` or add it in the compile flags.
+
+#### Example
+Turn on the testcase 07 by providing a `config.h' in `src` directory
+```C++
+#ifndef CONFIG_INC
+#   define CONFIG_INC
+#define  USE_TEST_07
+#endif
+```
+After compilation, run 
+```
+src/ExplicitTDHJ2D -X 128 -Y 128 -T 4 -d 0.001104 -o u128_0.001104_4.npy
+```
+to solve the PDE with a 128x128 grid and a timestep size of `0.001104`, using explicit method. The simulation runs backward from `T=4` down to `T=0`.
+
+### Visualizing the Results
+In the above example, the final data __u(x,0)__ is stored in the file `u128_0.001104_4.npy`. This files stores the 2D array of data at time slice __t=0__, and the file format is Numpy's [NPY format](https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html), so it can be easily read and visualized by python. For example, one can visualize the result using
+```
+../python/npy_plot.py u128_0.001104_4.npy
+```
