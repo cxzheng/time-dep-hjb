@@ -71,9 +71,9 @@ src/ExplicitTDHJ2D -X 128 -Y 128 -T 4 -d 0.001104 -o u128_0.001104_4.npy
 ```
 to solve the PDE with a 128x128 grid and a timestep size of `0.001104`, using explicit method. The simulation runs backward from `T=4` down to `T=0`.
 
-### Visualizing the Results
+### Interpreting the Results
 In the above example, the final data __u(x,0)__ is stored in the file `u128_0.001104_4.npy`. This files stores the 2D array of data at time slice __t=0__, and the file format is Numpy's [NPY format](https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html), so it can be easily read and visualized by python. For example, one can visualize the result using
 ```
 ../python/npy_plot.py u128_0.001104_4.npy
 ```
-In addition, the folder `test_scripts` includes two Perl scripts as an example of testing the testcase 07 using explicit, implicit, and hybrid methods with various resolutions. In particular, `test_scripts/test07.pl` runs the numerical solves, and `test_scripts/test07_err.pl` evaluates the error by comparing with a high-resolution (3072x3072) result (using explicit method).
+In addition, the folder `test_scripts` includes two Perl scripts as an example of testing the testcase 07 using explicit, implicit, and hybrid methods with various resolutions. In particular, `test_scripts/test07.pl` runs the numerical solves, and `test_scripts/test07_err.pl` evaluates the accuracy of different solvers by comparing with a high-resolution (3072x3072) result (using explicit method).
