@@ -58,7 +58,7 @@ typedef CachedImpLattice2D<func_F, func_G, TBC>   TLattice;
 Here `USE_TEST_XX` is the test case number. You can now enable this test case by define a flag `USE_TEST_XX` in `src/config.h` or add it in the compile flags.
 
 #### Example
-Turn on the testcase 07 by providing a `config.h' in `src` directory
+Turn on the testcase 07 (which is the experiment 4 in the paper) by providing a `config.h' in `src` directory
 ```C++
 #ifndef CONFIG_INC
 #   define CONFIG_INC
@@ -76,3 +76,4 @@ In the above example, the final data __u(x,0)__ is stored in the file `u128_0.00
 ```
 ../python/npy_plot.py u128_0.001104_4.npy
 ```
+In addition, the folder `test_scripts` includes two Perl scripts as an example of testing the testcase 07 using explicit, implicit, and hybrid methods with various resolutions. In particular, `test_scripts/test07.pl` runs the numerical solves, and `test_scripts/test07_err.pl` evaluates the error by comparing with a high-resolution (3072x3072) result (using explicit method).
