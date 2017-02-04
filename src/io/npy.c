@@ -33,8 +33,7 @@
 
 
 #include "npy.h"
-#include <elf.h>
-#include <endian.h>
+#include "IOEndian.h"
 
 int create_metadata(char preamble[PREAMBLE_LEN], char header[MAX_HDR_LEN],
                     char * descr, int fortran_order,                     

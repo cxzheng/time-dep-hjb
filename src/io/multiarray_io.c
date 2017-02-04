@@ -30,8 +30,8 @@
  */
  
 #include "multiarray_io.h"
+#include "IOEndian.h"
 #include <stdio.h>
-#include <endian.h>
 
 int save_multiarray_double(const char* file, 
         int ndims, const int* shape, const double* data)

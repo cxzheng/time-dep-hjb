@@ -35,7 +35,6 @@
 #include <boost/multi_array.hpp>
 #include "npy.h"
 #include "multiarray_io.h"
-#include <endian.h>
 
 template <size_t D>
 static void npy_write_array_double(const boost::multi_array<double, D>& array, const char* file)

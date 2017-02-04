@@ -24,11 +24,16 @@ if (CMAKE_CXX_COMPILER MATCHES ".*icpc$")
         add_definitions(-qopenmp)
         set(OPENMP_LIBS iomp5 ${CMAKE_THREAD_LIBS_INIT})
     endif ( USE_OPENMP )
+
 else (CMAKE_CXX_COMPILER MATCHES ".*icpc$")
     if ( USE_OPENMP )
         add_definitions(-fopenmp)
         set(OPENMP_LIBS gomp)
     endif ( USE_OPENMP )
+
+    # disable warning
+    add_definitions(-Wno-unused-private-field)
+
 endif (CMAKE_CXX_COMPILER MATCHES ".*icpc$")
 
 #------------------------------------------------------------------------------
