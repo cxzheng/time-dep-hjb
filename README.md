@@ -47,6 +47,14 @@ struct func_F
     {   return ... }
 };
 ```
+And the _g_ function is defined in a similar way (e.g., see `src/HJ2DFunc.h`),
+```C++
+struct func_G
+{
+    inline double operator() (const vector2d& pos, double t) const
+    {   return ... }
+};
+```
 The boundary condition class specifies the number of boundary nodes, the positions of the boundary nodes, and their values. Please refoer to the code in `src/BoundaryCond.h` for a few examples.
 
 Once _f_, _g_ and the boundary condition class are defined, you can solve the PDE by defining a test case in the solver’s main code (e.g. `ImplicitTDHJ2D.cpp`),
